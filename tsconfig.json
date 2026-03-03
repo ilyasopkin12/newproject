@@ -1,6 +1,13 @@
 {
+  "include":["src/**/*","global.d.ts"],
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@shared/*": ["src/shared/*"],
+      "@app/*": ["src/app/*"],
+    },
     // File Layout
     // "rootDir": "./src",
     // "outDir": "./dist",
@@ -10,8 +17,7 @@
     "module": "nodenext",
     "target": "esnext",
     "noEmit": false,
-
-    "types": [],
+    "types": ["node"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -19,8 +25,8 @@
 
     // Other Outputs
     "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
+    "declarationMap": false,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
