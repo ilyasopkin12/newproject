@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 export default {
   mode: 'development',
-  entry: './src/main.ts',
+  entry: './src/main.tsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -36,7 +36,7 @@ export default {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     extensionAlias: {
-      '.js': ['.ts', '.js'],
+      '.js': ['.tsx', '.ts', '.js'],
     },
   },
   devtool: 'source-map',
