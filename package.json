@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "dev": "webpack --watch",
+    "build": "tsc --noEmit && webpack --mode production",
+    "build:prod": "webpack --mode production",
+    "dev": "webpack serve --mode development",
     "start": "webpack serve --mode development",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
@@ -31,6 +32,7 @@
     "@types/node": "^25.3.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@types/react-router-dom": "^5.3.3",
     "css-loader": "^7.1.4",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.8",
@@ -54,6 +56,7 @@
   },
   "dependencies": {
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.13.1"
   }
 }
