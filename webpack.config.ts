@@ -64,6 +64,7 @@ export default (env: any, argv: { mode: string }) => {
           use: [
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
             { loader: 'css-loader', options: { sourceMap: !isProduction } },
+            '@tailwindcss/webpack',
           ],
         },
         {
@@ -90,6 +91,7 @@ export default (env: any, argv: { mode: string }) => {
         '@': path.resolve(__dirname, 'src'),
         '@shared': path.resolve(__dirname, 'src/shared'),
         '@app': path.resolve(__dirname, 'src/app'),
+        '@widgets': path.resolve(__dirname, 'src/widgets'),
       },
     },
     // Source maps: подробные для dev, легкие для prod
@@ -99,7 +101,7 @@ export default (env: any, argv: { mode: string }) => {
     ...(isProduction ? {} : {
       devServer: {
         static: './dist',
-        port: 3000,
+        port: 4000,
         hot: true,
         historyApiFallback: true, // для SPA роутинга
       },

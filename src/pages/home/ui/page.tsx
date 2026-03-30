@@ -1,19 +1,16 @@
-import { useState } from 'react';
-import Logo from '@shared/assets/cross.svg?react';
-import styles from './page.module.scss';
-import { Input } from '@shared/ui/input/index.js';
+import { Header } from "@widgets/header/index.js";
+import { Sidebar } from "@widgets/sidebar/sidebar.js";
+
 export function Page() {
-  const [count, setCount] = useState(0);
-  const handleClick = () => {
-    setCount(count + 1);
-  };
+
   return (
-    <div>
-      <h1 className={styles.title}>Hello, World!</h1>
-      <p>Count: {count}</p>
-      <button onClick={handleClick}>Click me</button>
-      <Logo width={100} height={100} />
-      <Input type="text" placeholder={123} />
+    <div className="min-h-screen bg-slate-50">
+      <Sidebar />
+      <main className="ml-64 p-6">
+        <div className="flex flex-col items-center justify-between h-screen">
+          <Header />
+        </div>
+      </main>
     </div>
   );
 }
