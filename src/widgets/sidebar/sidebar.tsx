@@ -1,18 +1,19 @@
-import { Calendar, CheckCircle2, Home, LogOut, MessageSquare, Search, Settings } from "lucide-react"
+import { Calendar, CheckCircle2, Home, MessageSquare, Search, Settings } from "lucide-react"
 import { useState } from "react";
+import { SidebarLogout } from "./ui/index.js";
+import { Button } from "@shared/ui/button.js";
+const sidebarItems = [
+  { id: 'dashboard', label: 'Дашборд', icon: Home },
+  { id: 'appointments', label: 'Мои записи', icon: Calendar },
+  { id: 'messages', label: 'Сообщения', icon: MessageSquare },
+  { id: 'doctors', label: 'Поиск врачей', icon: Search },
+  { id: 'settings', label: 'Настройки', icon: Settings },
+];
 
 export const Sidebar = () => {
-    const sidebarItems = [
-        { id: 'dashboard', label: 'Дашборд', icon: Home },
-        { id: 'appointments', label: 'Мои записи', icon: Calendar },
-        { id: 'messages', label: 'Сообщения', icon: MessageSquare },
-        { id: 'doctors', label: 'Поиск врачей', icon: Search },
-        { id: 'settings', label: 'Настройки', icon: Settings },
-      ];
     const [activeTab, setActiveTab] = useState('dashboard');
     return (
         <>
-        {/* Sidebar */}
         <aside className="w-64 bg-white border-r border-slate-200 flex flex-col fixed h-full">
           <div className="p-6 flex items-center gap-3">
             <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white">
@@ -23,7 +24,8 @@ export const Sidebar = () => {
   
           <nav className="flex-1 px-4 py-4 space-y-1">
             {sidebarItems.map((item) => (
-              <button
+              <Button 
+                variant="ghost"
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
@@ -34,15 +36,13 @@ export const Sidebar = () => {
               >
                 <item.icon size={20} />
                 {item.label}
-              </button>
+              </Button>
             ))}
-          </nav>
-  
-          <div className="p-4 border-t border-slate-100">
-            <button className="w-full flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-red-500 transition-colors">
-              <LogOut size={20} />
-              Выйти
-            </button>
+          </nav> 
+          <div className="flex align-center p-4 border-t border-slate-100">
+            <div className="flex items-center justify-center">
+              <SidebarLogout />
+            </div>
           </div>
         </aside>
         </>

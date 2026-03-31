@@ -1,5 +1,5 @@
 import { Header } from "@widgets/header/index.js";
-import { Sidebar } from "@widgets/sidebar/sidebar.js";
+import { Sidebar } from "@widgets/sidebar/index.js";
 
 export function Page() {
 

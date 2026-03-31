@@ -1,26 +1,24 @@
 import { HeaderGreeting, HeaderSearch, HeaderNotifications, HeaderProfile } from "./ui/index.js";
-interface User {
+interface User  {
   name: string;
   surname: string;
   role: string;
 }
+const users: User[] = [{
+  name: "Александр",
+  surname: "Волков",
+  role: "Пациент",
+}, {
+  name: "Иван",
+  surname: "Иванов",
+  role: "Специалист",
+}, {
+  name: "Петр",
+  surname: "Петров",
+  role: "Администратор",
+}]
 
 export function Header() {
-  
-  const users: User[] = [{
-    name: "Александр",
-    surname: "Волков",
-    role: "Пациент",
-  }, {
-    name: "Иван",
-    surname: "Иванов",
-    role: "Специалист",
-  }, {
-    name: "Петр",
-    surname: "Петров",
-    role: "Администратор",
-  }]
-
   const currentUser = users[0];
   if (!currentUser) return null;
   return (
@@ -29,7 +27,7 @@ export function Header() {
       <div className="flex items-center gap-4">
         <HeaderSearch placeholder="Врачи, клиники, услуги..." />
         <HeaderNotifications onClick={() => {}} />
-        <HeaderProfile name={currentUser.name} surname={currentUser.surname} role={currentUser.role} />
+        <HeaderProfile user={currentUser} />
       </div>
     </header>
   );
