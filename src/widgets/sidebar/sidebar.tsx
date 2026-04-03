@@ -2,7 +2,7 @@ import { Calendar, CheckCircle2, Home, MessageSquare, Search, Settings } from "l
 import { useState } from "react";
 import { SidebarLogout } from "./ui/index.js";
 import { Button } from "@shared/ui/button.js";
-const sidebarItems = [
+const sidebarItems : { id: string, label: string, icon: React.ElementType }[] = [
   { id: 'dashboard', label: 'Дашборд', icon: Home },
   { id: 'appointments', label: 'Мои записи', icon: Calendar },
   { id: 'messages', label: 'Сообщения', icon: MessageSquare },
@@ -11,7 +11,7 @@ const sidebarItems = [
 ];
 
 export const Sidebar = () => {
-    const [activeTab, setActiveTab] = useState('dashboard');
+    const [activeTab, setActiveTab] = useState<string>('dashboard');
     return (
         <>
         <aside className="w-64 bg-white border-r border-slate-200 flex flex-col fixed h-full">

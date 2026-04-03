@@ -8,7 +8,7 @@ import type { Configuration as DevServerConfiguration } from 'webpack-dev-server
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export default (env: any, argv: { mode: string }) => {
+export default (env: { [key: string]: unknown }, argv: { mode: string }) => {
   const isProduction = argv.mode === 'production';
   
   const config: Configuration & DevServerConfiguration = {
