@@ -7,7 +7,8 @@ interface HeaderNotificationsProps {
 
 export const HeaderNotifications = ( props: HeaderNotificationsProps ) => {
     return (
-        <Button variant="outline" size="icon" onClick={props.onClick}>
+        <Button variant="outline" size="default" onClick={props.onClick}>
+            <span>Уведолмения</span>
             <Bell size={20} className="text-slate-600" />
         </Button>
     )
