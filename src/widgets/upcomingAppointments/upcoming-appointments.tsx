@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface UpcomingAppointment {
   id: string;
   initials: string;
@@ -37,7 +39,7 @@ export function UpcomingAppointments() {
     <section className="mb-8 w-full">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-lg font-bold">Предстоящие записи</h2>
-        <a href="#" className="text-sm text-blue-600 hover:text-blue-700">Все записи →</a>
+        <Link to="/appointments" className="text-sm text-blue-600 hover:text-blue-700">Все записи →</Link>
       </div>
 
       <div className="space-y-3">
