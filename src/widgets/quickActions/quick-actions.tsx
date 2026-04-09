@@ -36,15 +36,15 @@ export function QuickActions() {
   return (
     <section className="mb-8">
       <div className="grid grid-cols-4 gap-4">
-        {quickActions.map((action) => (
+        {quickActions.map(({ id, icon, title, description }) => (
           <button
-            key={action.id}
+            key={id}
             className="rounded-xl border border-slate-200 bg-white p-4 text-left hover:border-blue-300 hover:bg-blue-50 transition"
             type="button"
           >
-            <div className="text-2xl mb-2">{action.icon}</div>
-            <p className="font-semibold text-sm">{action.title}</p>
-            <p className="text-xs text-slate-500">{action.description}</p>
+            <div className="text-2xl mb-2">{icon}</div>
+            <p className="font-semibold text-sm">{title}</p>
+            <p className="text-xs text-slate-500">{description}</p>
           </button>
         ))}
       </div>
