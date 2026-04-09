@@ -41,26 +41,26 @@ export function UpcomingAppointments() {
       </div>
 
       <div className="space-y-3">
-        {appointments.map((appointment) => (
+        {appointments.map(({ id, initials, initialsBackground, initialsColor, doctorName, meta, dateTime, place }) => (
           <div
-            key={appointment.id}
+            key={id}
             className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 transition hover:border-blue-300"
           >
             <div className="flex items-center gap-4">
               <div
-                className={`flex h-12 w-12 items-center justify-center rounded-full font-bold ${appointment.initialsBackground} ${appointment.initialsColor}`}
+                className={`flex h-12 w-12 items-center justify-center rounded-full font-bold ${initialsBackground} ${initialsColor}`}
               >
-                {appointment.initials}
+                {initials}
               </div>
               <div>
-                <p className="font-semibold">{appointment.doctorName}</p>
-                <p className="text-sm text-slate-500">{appointment.meta}</p>
+                <p className="font-semibold">{doctorName}</p>
+                <p className="text-sm text-slate-500">{meta}</p>
               </div>
             </div>
 
             <div className="text-right">
-              <p className="font-semibold">{appointment.dateTime}</p>
-              <p className="text-sm text-slate-500">{appointment.place}</p>
+              <p className="font-semibold">{dateTime}</p>
+              <p className="text-sm text-slate-500">{place}</p>
             </div>
           </div>
         ))}
