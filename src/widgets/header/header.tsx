@@ -10,7 +10,7 @@ export function Header() {
 
   return (
     <header className="flex items-center justify-between gap-10 w-full">
-      <HeaderGreeting name={user?.name ?? "Гость"} surname={user?.surname ?? ""} />
+      <HeaderGreeting name={user?.name ?? "Гость"}/>
       <div className="flex items-center gap-4">
         <HeaderSearch placeholder="Врачи, клиники, услуги..." />
         <HeaderNotifications onClick={() => {}} />

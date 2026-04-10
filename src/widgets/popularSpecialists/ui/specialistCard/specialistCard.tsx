@@ -7,10 +7,10 @@ export const SpecialistCard = ( {doctor}: specialistCardProps ) => {
     <div className="wrapper rounded-xl border border-slate-200 bg-white p-4 hover:border-blue-300 transition cursor-pointer w-200">
         <div className="cardHeader flex items-center gap-3 mb-3">
             <div className="doctorProfile flex h-10 w-10 items-center justify-center rounded-full bg-red-100 font-bold text-red-600">
-            {`${doctor.fullName[0]} ${doctor.fullName[0]}`}
+            {`${doctor.name[0]} ${doctor.surname[0]}`}
             </div>
             <div className="doctorInfo ">
-                <p className="font-semibold text-sm">{`${doctor.fullName}`}</p>
+                <p className="font-semibold text-sm">{`${doctor.name} ${doctor.surname}`}</p>
                 <p className="text-xs text-slate-500">{`${doctor.specialization}`}</p>
             </div>
         </div>
