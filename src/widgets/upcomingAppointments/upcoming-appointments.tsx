@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-interface UpcomingAppointment {
+type UpcomingAppointment = {
   id: string;
   initials: string;
   doctorName: string;
