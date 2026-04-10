@@ -1,4 +1,4 @@
-interface QuickActionItem {
+type QuickActionItem = {
   id: string;
   title: string;
   description: string;
