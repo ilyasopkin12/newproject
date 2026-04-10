@@ -1,10 +1,7 @@
+import type { User } from "@/entities/user/model/types.js"
 
-interface HeaderProfileProps {
-    user : {
-    name: string,
-    surname: string,
-    role: string
-    }
+type  HeaderProfileProps = {
+    user: User
 }
 
 export const HeaderProfile = ( {user}: HeaderProfileProps ) => {

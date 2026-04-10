@@ -1,6 +1,5 @@
 import { HeaderGreeting, HeaderSearch, HeaderNotifications, HeaderProfile } from "./ui/index.js";
 import { useState } from "react";
-import type { User } from "@/entities/user/model/types.js";
 import { useAuth } from "@shared/lib/auth/useAuth.js"
 import { AuthActions } from "./ui/headerAuthActions/header-auth-actions.js";
 import { HeaderAuthModal } from "./ui/headerAuthModal/header-auth-modal.js";
@@ -20,9 +19,7 @@ export function Header() {
         ): (
         <>
           <AuthActions onLoginClick = {() => setLoginOpen(true)}/>
-          {loginOpen && (
-            <HeaderAuthModal onClose={()=> setLoginOpen(false)}/>
-          )}
+            <HeaderAuthModal onClose={()=> setLoginOpen(false)} open={loginOpen}/>
         </>
         )}
       </div>

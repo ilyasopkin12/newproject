@@ -4,9 +4,9 @@ interface AuthActionsProps {
     onLoginClick: () => void
 }
 
-export const AuthActions = ( props: AuthActionsProps )=> {
+export const AuthActions = ( {onLoginClick} : AuthActionsProps )=> {
     return (
-        <Button variant="outline" size="default" onClick={props.onLoginClick}>
+        <Button variant="outline" size="default" onClick={onLoginClick}>
             Войти
         </Button>
     )

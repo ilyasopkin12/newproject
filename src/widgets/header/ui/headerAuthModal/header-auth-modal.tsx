@@ -1,128 +1,126 @@
-import { useAuth } from "@/shared/lib/auth/useAuth.js"
-import { ShieldCheck, Mail, X, Lock, ArrowRight, EyeOff, Eye } from "lucide-react"
-import { useState } from "react"
+import { useLoginMutation } from "@/features/auth/model/use-login-mutation.js";
+import { useAuth } from "@/shared/lib/auth/useAuth.js";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowRight, Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/shared/ui/button.js";
+import { Input } from "@/shared/ui/input.js";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/shared/ui/dialog.js";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/shared/ui/form.js";
 
 interface HeaderAuthModalProps {
-    onClose : () => void
+  open: boolean;
+  onClose: () => void;
 }
 
-export const HeaderAuthModal = (props : HeaderAuthModalProps) => {
-    const [showPassword,setShowPassword] = useState(false)
-    const {login} = useAuth()
-    const [email,setEmail] = useState("")
-    const [password,setPassword] = useState("")
-    const [error,setError] = useState<string | null>(null)
-    const [isSubmitting,setIsSubmitting] = useState(false)
+const loginSchema = z.object({
+  email: z.string().email("Введите корректный email"),
+  password: z.string().min(6, "Минимум 6 символов"),
+});
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setError(null)
-        setIsSubmitting(true)
+type LoginFormValues = z.infer<typeof loginSchema>;
 
-        try {
-            await login({email, password})
-            props.onClose()
-        } catch (e) {
-            setError("Неверный логин или пароль")
-        } finally {
-            setIsSubmitting(false)
-        }
-    }
+export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+  const { setAuthUser } = useAuth();
 
-    return(
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-        <div className="bg-white w-full max-w-[440px] rounded-3xl shadow-2xl overflow-hidden relative animate-in fade-in zoom-in duration-300">
-          
-          {/* Close Button */}
-          <button className="absolute right-6 top-6 text-slate-400 hover:text-slate-600 transition-colors" onClick={props.onClose}>
-            <X size={24} />
-          </button>
-  
-          <div className="p-8 sm:p-10">
-            {/* Header */}
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-50 rounded-2xl text-blue-600 mb-4">
-                <ShieldCheck size={32} />
-              </div>
-              <h2 className="text-2xl font-bold text-slate-900">С возвращением!</h2>
-              <p className="text-slate-500 mt-2">Войдите в свой аккаунт MedSync</p>
-            </div>
-  
-            {/* Form */}
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                  <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e)=> setEmail(e.target.value)}
-                    placeholder="example@mail.com"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 pl-12 pr-4 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                  />
-                </div>
-              </div>
-  
-              <div>
-                <div className="flex justify-between mb-2">
-                  <label className="text-sm font-semibold text-slate-700">Пароль</label>
-                  <button className="text-xs font-bold text-blue-600 hover:text-blue-700">Забыли пароль?</button>
-                </div>
-                <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                  <input 
-                    type={showPassword ? "text" : "password"} 
-                    placeholder="••••••••"
-                    value={password}
-                    onChange={(e)=> setPassword(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 pl-12 pr-12 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                  />
-                  <button 
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
-                  >
-                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                  </button>
-                </div>
-              </div>
-  
-              <div className="flex items-center gap-2 pt-2">
-                <input type="checkbox" id="remember" className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" />
-                <label htmlFor="remember" className="text-sm text-slate-600">Запомнить меня на этом устройстве</label>
-              </div>
-  
-              <button className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2 group" type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Входим" : "Войти"}
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-  
-            {/* Divider */}
-            <div className="relative my-8 text-center">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-100"></div>
-              </div>
-              <span className="relative px-4 bg-white text-xs font-medium text-slate-400 uppercase tracking-wider">или войти через</span>
-            </div>
-  
-            {/* Social Logins */}
-            <div className="grid grid-cols-2 gap-4">
-              <button className="flex items-center justify-center gap-2 py-3 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors font-medium text-sm text-slate-700">
-                Google
-              </button>
-              <button className="flex items-center justify-center gap-2 py-3 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors font-medium text-sm text-slate-700">
-                Apple ID
-              </button>
-            </div>
-  
-            {/* Footer */}
-            <p className="text-center mt-8 text-sm text-slate-500">
-              Еще нет аккаунта? <button className="text-blue-600 font-bold hover:underline">Создать профиль</button>
-            </p>
-          </div>
-        </div>
-        </div>
-    )
-}
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: { email: "", password: "" },
+  });
+
+  const { mutateAsync: loginMutate, isPending } = useLoginMutation({
+    onSuccess: (me) => {
+      setAuthUser(me);
+      onClose();
+    },
+    onError: () => {
+      setServerError("Неверный логин или пароль");
+    },
+  });
+
+  const onSubmit = async (values: LoginFormValues) => {
+    setServerError(null);
+    await loginMutate(values);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={(next) => !next && onClose()}>
+      <DialogContent className="sm:max-w-[420px]">
+        <DialogHeader>
+          <DialogTitle>Вход</DialogTitle>
+          <DialogDescription>Войдите в аккаунт MedSync</DialogDescription>
+        </DialogHeader>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="example@mail.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Пароль</FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="••••••••"
+                        {...field}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword((v) => !v)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
+                      >
+                        {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {serverError && <p className="text-sm text-red-500">{serverError}</p>}
+
+            <Button type="submit" className="w-full" disabled={isPending}>
+              {isPending ? "Входим..." : "Войти"}
+              <ArrowRight className="ml-2" size={16} />
+            </Button>
+          </form>
+        </Form>
+      </DialogContent>
+    </Dialog>
+  );
+};
