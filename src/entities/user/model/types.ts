@@ -3,9 +3,10 @@
 export type User = {
     id: string,
     email: string,
-    fullName: string,
+    name: string,
+    surname: string,
     phone?: string,
-    createdAt: Date,
+    createdAt?: Date,
     passwordHash: string,
     role: string
 }
