@@ -14,7 +14,7 @@ export const HeaderSearch = ( props: HeaderSearchProps ) => {
             <Input 
                 type="text" 
                 placeholder={props.placeholder} 
-                className="bg-white border border-slate-200 rounded-xl py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                className="bg-white border border-slate-200 rounded-xl py-2 pl-10 pr-4 w-128 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
             />
         </div>
     )

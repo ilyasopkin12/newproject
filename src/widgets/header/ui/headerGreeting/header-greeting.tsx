@@ -1,11 +1,13 @@
-interface HeaderGreetingProps {
-    name: string;
-    surname: string;
+
+type  HeaderGreetingProps = {
+
+    name: string
 }
-export const HeaderGreeting = ( props: HeaderGreetingProps ) => {
+
+export const HeaderGreeting = ( user : HeaderGreetingProps ) => {
     return (
         <div>
-            <h1 className="text-2xl font-bold">{`Добро пожаловать, ${props.name} ${props.surname}`}</h1>
+            <h1 className="text-2xl font-bold">{`Добро пожаловать, ${user.name}`}</h1>
             <p className="text-slate-500">Найдите подходящего специалиста и запишитесь на прием.</p>
         </div>
     )
