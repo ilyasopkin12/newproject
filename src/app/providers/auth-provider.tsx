@@ -1,6 +1,5 @@
 import React,{ createContext, useContext, useEffect, useMemo, useState} from "react";
 import type { User } from "@/entities/user/model/types.js";
-import { apiClient } from "@/shared/api/client.js";
 import { tokenStorage } from "@/shared/api/token-storage.js";
 
 
