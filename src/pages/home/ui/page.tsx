@@ -1,9 +1,7 @@
 import { Header } from "@widgets/header/index.js";
 import { Sidebar } from "@widgets/sidebar/index.js";
-import { PopularSpecialists } from "@/widgets/popularSpecialists/index.js";
-import { useEffect, useState } from "react";
-import { getDoctorsMock } from "@/entities/doctor/api/getDoctorsMock.js";
-import type { Doctor } from "@/entities/doctor/model/types.js";
+import { UpcomingAppointments } from "@/widgets/upcomingAppointments/index.js";
+
 export function Page() {
   const [doctors,setDoctors] = useState<Doctor[]>([])
   useEffect(()=>{
@@ -18,9 +16,9 @@ export function Page() {
     <div className="min-h-screen bg-slate-50">
       <Sidebar />
       <main className="ml-64 p-6">
-        <div className="flex flex-col items-center justify-between h-screen">
+        <div className="h-screen">
           <Header />
-          <PopularSpecialists doctors={doctors}/>
+          <UpcomingAppointments />
         </div>
       </main>
     </div>
