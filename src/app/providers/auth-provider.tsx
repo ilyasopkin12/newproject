@@ -38,7 +38,6 @@ export function AuthProvider ({children}: AuthProviderProps) {
         setUser(null)
         tokenStorage.clearAllAuth()
     }
-    const isAuthenticated = Boolean(user)
 
     const value = useMemo<AuthContextValue>(
         () => ({

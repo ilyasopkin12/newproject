@@ -1,17 +1,21 @@
-import { Header } from "@widgets/header/index.js";
-import { QuickActions } from "@widgets/quickActions/index.js";
-import { Sidebar } from "@widgets/sidebar/index.js";
-import { UpcomingAppointments } from "@/widgets/upcomingAppointments/index.js";
+import { Header } from "@widgets/index.js";
+import { QuickActions } from "@widgets/index.js";
+import { Sidebar } from "@widgets/index.js";
+import { UpcomingAppointments } from "@/widgets/index.js";
+import { PopularSpecialists } from "@/widgets/index.js";
+import { getDoctors } from "@/entities/doctor/api/getDoctors.js";
+import { useEffect, useState } from "react";
+import type { Doctor } from "@/entities/doctor/model/types.js";
 
 export function Page() {
-  const [doctors,setDoctors] = useState<Doctor[]>([])
-  useEffect(()=>{
-    const loadDoctors = async () => {
-      const doctorsData = await getDoctorsMock()
-      setDoctors(doctorsData)
-    }
-    void loadDoctors()
-  },[])
+   const [doctors,setDoctors] = useState<Doctor[]>([])
+   useEffect(()=>{
+     const loadDoctors = async () => {
+       const doctorsData = await getDoctors()
+       setDoctors(doctorsData)
+     }
+     void loadDoctors()
+   },[])
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -20,6 +24,8 @@ export function Page() {
         <div className="space-y-8">
           <Header />
           <QuickActions />
+          <UpcomingAppointments/>
+          <PopularSpecialists doctors={doctors}/>
         </div>
       </main>
     </div>

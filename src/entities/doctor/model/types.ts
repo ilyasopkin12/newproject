@@ -3,9 +3,12 @@ export type Doctor = {
     id: string,
     name: string,
     surname: string,
-    specialization: string,
+    specialization: {
+        name: string,
+        id: string
+    },
     city: string,
-    expirienceYears: number,
+    experienceYears: number,
     description?: string | null,
     isActive?: boolean
 }
