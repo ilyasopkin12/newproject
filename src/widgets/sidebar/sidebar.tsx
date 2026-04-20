@@ -1,7 +1,7 @@
 import { Calendar, CheckCircle2, Home, MessageSquare, Search, Settings } from "lucide-react"
 import { useState } from "react";
-import { SidebarLogout } from "./ui/index.js";
-import { Button } from "@shared/ui/button.js";
+import { SidebarLogout } from "./ui/index";
+import { Button } from "@shared/ui/button";
 const sidebarItems : { id: string, label: string, icon: React.ElementType }[] = [
   { id: 'dashboard', label: 'Дашборд', icon: Home },
   { id: 'appointments', label: 'Мои записи', icon: Calendar },

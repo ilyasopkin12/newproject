@@ -1,5 +1,5 @@
 import { LogOut } from "lucide-react"
-import { Button } from "@shared/ui/button.js"
+import { Button } from "@shared/ui/button"
 
 export const SidebarLogout = () => {
     return (

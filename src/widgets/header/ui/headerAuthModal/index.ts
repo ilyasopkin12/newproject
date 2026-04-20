@@ -1,1 +1,1 @@
-export { HeaderAuthModal } from "./header-auth-modal.js"
+export { HeaderAuthModal } from "./header-auth-modal"

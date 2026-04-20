@@ -1,4 +1,4 @@
-import { Button } from "@/shared/ui/button.js"
+import { Button } from "@/shared/ui/button"
 
 type AuthActionsProps = {
     onLoginClick: () => void

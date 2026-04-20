@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getDoctors } from "../api/getDoctors.js";
+import { getDoctors } from "../api/getDoctors";
 
 export function useDoctors() {
     return useQuery({

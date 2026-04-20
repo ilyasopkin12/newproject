@@ -1,4 +1,4 @@
-import type { User } from "@/entities/user/model/types.js"
+import type { User } from "@/entities/user/model/types"
 
 type  HeaderProfileProps = {
     user: User

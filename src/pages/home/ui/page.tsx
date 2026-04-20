@@ -1,21 +1,29 @@
-import { Header } from "@widgets/index.js";
-import { QuickActions } from "@widgets/index.js";
-import { Sidebar } from "@widgets/index.js";
-import { UpcomingAppointments } from "@/widgets/index.js";
-import { PopularSpecialists } from "@/widgets/index.js";
-import { getDoctors } from "@/entities/doctor/api/getDoctors.js";
-import { useEffect, useState } from "react";
-import type { Doctor } from "@/entities/doctor/model/types.js";
+import { Header } from "@widgets/index";
+import { QuickActions } from "@widgets/index";
+import { Sidebar } from "@widgets/index";
+import { UpcomingAppointments } from "@/widgets/index";
+import { PopularSpecialists } from "@/widgets/index";
+import { useDoctors } from "@/entities/doctor/model/use-doctors";
+import { useAuth } from "@/shared/lib/auth/useAuth";
 
 export function Page() {
-   const [doctors,setDoctors] = useState<Doctor[]>([])
-   useEffect(()=>{
-     const loadDoctors = async () => {
-       const doctorsData = await getDoctors()
-       setDoctors(doctorsData)
-     }
-     void loadDoctors()
-   },[])
+  const { user } = useAuth()
+  const {data, isPending,isError} = useDoctors()
+  
+  if(isError) {
+    console.log("Ошибка загрузки данных с сервера")
+    return (
+      <div className="min-h-screen bg-slate-50 p-6">
+        <p>Ошибка загрузки данных, попробуйте позже</p>
+      </div>
+    )
+  }
+
+  if (isPending) {
+    return (
+      <div>Загрузка...</div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -25,7 +33,7 @@ export function Page() {
           <Header />
           <QuickActions />
           <UpcomingAppointments/>
-          <PopularSpecialists doctors={doctors}/>
+          <PopularSpecialists doctors={isPending? [] : (data ?? [])} user={user}/>
         </div>
       </main>
     </div>

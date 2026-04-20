@@ -1,1 +1,1 @@
-export { HeaderGreeting } from './header-greeting.js';
+export { HeaderGreeting } from './header-greeting';

@@ -1,1 +1,1 @@
-export { PopularSpecialists } from "./popularSpecialists.js"
+export { PopularSpecialists } from "./popularSpecialists"

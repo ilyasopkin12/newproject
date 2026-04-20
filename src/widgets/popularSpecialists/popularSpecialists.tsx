@@ -1,12 +1,14 @@
-import type { Doctor } from "@/entities/doctor/model/types.js"
-import { SpecialistCard } from "./ui/index.js"
+import type { Doctor } from "@/entities/doctor/model/types"
+import type { User } from "@/entities/user/model/types"
+import { SpecialistCard } from "./ui/index"
 import { Lightbulb } from "lucide-react"
 
 type PopularSpecialistsProps = {
-    doctors: Doctor[];
+    doctors: Doctor[],
+    user?: User | null
 }
 
-export function PopularSpecialists({doctors}: PopularSpecialistsProps ) {
+export function PopularSpecialists({doctors, user}: PopularSpecialistsProps ) {
     return (
     <section className="flex flex-col gap-4">
         <h2 className="text-lg font-bold text-slate-900">Популярные специалисты</h2>
@@ -20,8 +22,8 @@ export function PopularSpecialists({doctors}: PopularSpecialistsProps ) {
                 <aside className="w-full shrink-0 rounded-xl border border-slate-200 bg-white p-5 md:w-72">
                     <p className="mb-4 text-sm font-semibold text-slate-900">Ваша статистика</p>
                     <div className="flex flex-col gap-3 text-sm text-slate-600">
-                        <p><span className="text-slate-400">Всего визитов</span></p>
-                        <p><span className="text-slate-400">Предстоящих визитов</span></p>
+                        <p><span className="text-slate-400">Всего визитов: {user?.totalVisits ?? "-"}</span></p>
+                        <p><span className="text-slate-400">Предстоящих визитов: {user?.upcomingVisits ?? "-"}</span></p>
                     </div>
                 </aside>
                 <div className="w-100 border rounded-xl border-slate-200  p-5 bg-blue-50">

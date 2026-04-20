@@ -1,5 +1,5 @@
-import { apiClient } from "@/shared/api/client.js";
-import type { Doctor } from "../model/types.js";
+import { apiClient } from "@/shared/api/client";
+import type { Doctor } from "../model/types";
 
 export async function getDoctors(): Promise<Doctor[]> {
     const { data } = await apiClient.get<{items: Doctor[]}>("/doctors")

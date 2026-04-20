@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { loginRequest, type LoginPayload } from "../api/login.js"
-import type { User } from "@/entities/user/model/types.js";
+import { loginRequest, type LoginPayload } from "../api/login"
+import type { User } from "@/entities/user/model/types";
 
 export function useLoginMutation(options?: {
     onSuccess?: (user: User) => void

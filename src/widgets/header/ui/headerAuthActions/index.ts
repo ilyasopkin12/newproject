@@ -1,1 +1,1 @@
-export { AuthActions } from "./header-auth-actions.js"
+export { AuthActions } from "./header-auth-actions"

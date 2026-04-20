@@ -1,1 +1,1 @@
-export { HeaderSearch } from './header-search.js';
+export { HeaderSearch } from './header-search';

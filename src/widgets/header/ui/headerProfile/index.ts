@@ -1,1 +1,1 @@
-export { HeaderProfile } from './header-profile.js';
+export { HeaderProfile } from './header-profile';

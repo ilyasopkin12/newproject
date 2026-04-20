@@ -1,4 +1,4 @@
-import type { Doctor } from "@/entities/doctor/model/types.js"
+import type { Doctor } from "@/entities/doctor/model/types"
 interface specialistCardProps {
     doctor: Doctor
 }

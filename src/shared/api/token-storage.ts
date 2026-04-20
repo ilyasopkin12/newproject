@@ -1,4 +1,4 @@
-import type { User } from "@/entities/user/model/types.js";
+import type { User } from "@/entities/user/model/types";
 
 const ACCESS_TOKEN_KEY = "access_token";
 const REFRESH_TOKEN_KEY = "refresh_token";

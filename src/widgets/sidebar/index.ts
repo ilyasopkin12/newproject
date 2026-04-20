@@ -1,1 +1,1 @@
-export { Sidebar } from "./sidebar.js";
+export { Sidebar } from "./sidebar";
