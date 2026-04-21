@@ -10,5 +10,9 @@ export type Doctor = {
     city: string,
     experienceYears: number,
     description?: string | null,
+    visitCount: number,
+    ratingStars: number,    
+    clinic: string,
+    cabinet: string,
     isActive?: boolean
 }
