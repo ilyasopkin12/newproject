@@ -42,8 +42,8 @@ export const Sidebar = () => {
               </Button>
             ))}
           </nav> 
-          <div className="flex align-center p-4 border-t border-slate-100">
-            <div className="flex items-center justify-center">
+          <div className="absolute bottom-0 w-full border-t border-slate-100 p-4">
+            <div className="w-full rounded-xl px-4 py-3 text-left text-slate-500">
               <SidebarLogout onLogoutClick={logout} />
             </div>
           </div>
