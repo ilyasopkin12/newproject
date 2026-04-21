@@ -1,6 +1,6 @@
 import axios from "axios"
 import type { AxiosError, AxiosRequestConfig } from "axios"
-import { tokenStorage } from "./token-storage.js"
+import { tokenStorage } from "./token-storage"
 
 type RetryConfing = AxiosRequestConfig & {_retry? : boolean; _networkRetryCount?: number}
 

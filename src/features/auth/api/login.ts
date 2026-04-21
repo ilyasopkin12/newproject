@@ -1,6 +1,6 @@
-import { apiClient } from "@/shared/api/client.js";
-import { tokenStorage } from "@/shared/api/token-storage.js";
-import type { User } from "@/entities/user/model/types.js";
+import { apiClient } from "@/shared/api/client";
+import { tokenStorage } from "@/shared/api/token-storage";
+import type { User } from "@/entities/user/model/types";
 
 export type LoginPayload = {
     email : string

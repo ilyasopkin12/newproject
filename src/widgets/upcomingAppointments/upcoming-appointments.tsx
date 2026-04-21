@@ -59,7 +59,7 @@ export function UpcomingAppointments() {
             return (
               <div
                 key={id}
-                className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 transition hover:border-blue-300"
+                className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 transition hover:border-blue-300 "
               >
                 <div className="flex items-center gap-4">
                   <div

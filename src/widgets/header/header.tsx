@@ -1,8 +1,8 @@
-import { HeaderGreeting, HeaderSearch, HeaderNotifications, HeaderProfile } from "./ui/index.js";
+import { HeaderGreeting, HeaderSearch, HeaderNotifications, HeaderProfile } from "./ui/index";
 import { useState } from "react";
-import { useAuth } from "@shared/lib/auth/useAuth.js"
-import { AuthActions } from "./ui/headerAuthActions/header-auth-actions.js";
-import { HeaderAuthModal } from "./ui/headerAuthModal/header-auth-modal.js";
+import { useAuth } from "@shared/lib/auth/useAuth"
+import { AuthActions } from "./ui/headerAuthActions/header-auth-actions";
+import { HeaderAuthModal } from "./ui/headerAuthModal/header-auth-modal";
 
 export function Header() {
   const { isAuthenticated, user } = useAuth()

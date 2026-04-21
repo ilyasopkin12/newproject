@@ -1,1 +1,1 @@
-export { SidebarLogout } from "./sidebar-logout.js";
+export { SidebarLogout } from "./sidebar-logout";

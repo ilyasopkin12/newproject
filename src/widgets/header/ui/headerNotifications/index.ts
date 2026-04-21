@@ -1,1 +1,1 @@
-export { HeaderNotifications } from './header-notifications.js';
+export { HeaderNotifications } from './header-notifications';

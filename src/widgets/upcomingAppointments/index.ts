@@ -1,1 +1,1 @@
-export { UpcomingAppointments } from "./upcoming-appointments.js";
+export { UpcomingAppointments } from "./upcoming-appointments";

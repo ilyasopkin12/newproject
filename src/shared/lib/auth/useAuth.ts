@@ -1,1 +1,1 @@
-export {useAuthContext as useAuth} from "@/app/providers/auth-provider.js"
+export {useAuthContext as useAuth} from "@/app/providers/auth-provider"

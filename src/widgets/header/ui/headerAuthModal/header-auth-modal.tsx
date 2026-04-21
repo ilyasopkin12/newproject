@@ -1,20 +1,20 @@
-import { useLoginMutation } from "@/features/auth/model/use-login-mutation.js";
-import { useAuth } from "@/shared/lib/auth/useAuth.js";
+import { useLoginMutation } from "@/features/auth/model/use-login-mutation";
+import { useAuth } from "@/shared/lib/auth/useAuth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@/shared/ui/button.js";
-import { Input } from "@/shared/ui/input.js";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/shared/ui/dialog.js";
+} from "@/shared/ui/dialog";
 import {
   Form,
   FormControl,
@@ -22,7 +22,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/shared/ui/form.js";
+} from "@/shared/ui/form";
 
 interface HeaderAuthModalProps {
   open: boolean;
