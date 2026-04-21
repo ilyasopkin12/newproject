@@ -33,7 +33,7 @@ export function Page() {
           <Header />
           <QuickActions />
           <UpcomingAppointments/>
-          <PopularSpecialists doctors={isPending? [] : (data ?? [])} user={user}/>
+          <PopularSpecialists doctors={isPending? [] : (data)} user={user}/>
         </div>
       </main>
     </div>
