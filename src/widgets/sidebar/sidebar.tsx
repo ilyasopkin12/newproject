@@ -2,6 +2,8 @@ import { Calendar, CheckCircle2, Home, MessageSquare, Search, Settings } from "l
 import { useState } from "react";
 import { SidebarLogout } from "./ui/index";
 import { Button } from "@shared/ui/button";
+import { useAuth } from "@/shared/lib/auth/useAuth";
+
 const sidebarItems : { id: string, label: string, icon: React.ElementType }[] = [
   { id: 'dashboard', label: 'Дашборд', icon: Home },
   { id: 'appointments', label: 'Мои записи', icon: Calendar },
@@ -12,6 +14,7 @@ const sidebarItems : { id: string, label: string, icon: React.ElementType }[] = 
 
 export const Sidebar = () => {
     const [activeTab, setActiveTab] = useState<string>('dashboard');
+    const {logout} = useAuth()
     return (
         <>
         <aside className="w-64 bg-white border-r border-slate-200 flex flex-col fixed h-full">
@@ -41,7 +44,7 @@ export const Sidebar = () => {
           </nav> 
           <div className="flex align-center p-4 border-t border-slate-100">
             <div className="flex items-center justify-center">
-              <SidebarLogout />
+              <SidebarLogout onLogoutClick={logout} />
             </div>
           </div>
         </aside>
