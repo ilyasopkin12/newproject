@@ -25,13 +25,13 @@ export const Sidebar = () => {
             <span className="text-xl font-bold tracking-tight text-blue-600">MedSync</span>
           </div>
   
-          <nav className="flex-1 px-4 py-4 space-y-1">
+          <nav className="flex flex-col justify-items-start space-y-1 gap-5">
             {sidebarItems.map((item) => (
               <Button 
                 variant="ghost"
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                className={`w-full flex justify-start text-left text-md items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                   activeTab === item.id 
                   ? 'bg-blue-50 text-blue-600 font-semibold' 
                   : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
@@ -42,8 +42,8 @@ export const Sidebar = () => {
               </Button>
             ))}
           </nav> 
-          <div className="absolute bottom-0 w-full border-t border-slate-100 p-4">
-            <div className="w-full rounded-xl px-4 py-3 text-left text-slate-500">
+          <div className=" flex absolute bottom-0 w-full border-t border-slate-100">
+            <div className="rounded-xl text-left text-slate-500 py-4">
               <SidebarLogout onLogoutClick={logout} />
             </div>
           </div>
