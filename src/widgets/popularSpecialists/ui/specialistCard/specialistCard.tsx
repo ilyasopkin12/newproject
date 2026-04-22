@@ -1,4 +1,5 @@
 import type { Doctor } from "@/entities/doctor/model/types"
+import { Star, Stars } from "lucide-react"
 interface specialistCardProps {
     doctor: Doctor
 }
@@ -14,7 +15,9 @@ export const SpecialistCard = ( {doctor}: specialistCardProps ) => {
                 <p className="text-xs text-slate-500">{`${doctor.specialization.name}`}</p>
             </div>
         </div>
-        <div className="rating flex"></div>
+        <div className="flex gap-0.5">{Array.from({ length: doctor.ratingStars}).map((_,i)=> (
+            <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400"></Star>
+        ))}</div>
         <div className="doctorExpirience ">
             <p className="text-xs text-slate-500 mt-2">Опыт: {`${doctor.experienceYears}`} лет</p>
         </div>
