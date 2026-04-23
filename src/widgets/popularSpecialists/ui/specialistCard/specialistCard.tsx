@@ -1,6 +1,6 @@
 import type { Doctor } from "@/entities/doctor/model/types"
 import { Star } from "lucide-react"
-interface specialistCardProps {
+type specialistCardProps = {
     doctor: Doctor
 }
 export const SpecialistCard = ( {doctor}: specialistCardProps ) => {
