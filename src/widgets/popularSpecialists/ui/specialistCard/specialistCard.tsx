@@ -1,11 +1,11 @@
 import type { Doctor } from "@/entities/doctor/model/types"
-import { Star, Stars } from "lucide-react"
-interface specialistCardProps {
+import { Star } from "lucide-react"
+type specialistCardProps = {
     doctor: Doctor
 }
 export const SpecialistCard = ( {doctor}: specialistCardProps ) => {
     return (
-    <div className="wrapper rounded-xl border border-slate-200 bg-white p-4 hover:border-blue-300 transition cursor-pointer w-125">
+    <div className="wrapper rounded-xl border border-slate-200 bg-white p-4 hover:border-blue-300 transition cursor-pointer w-90">
         <div className="cardHeader flex items-center gap-3 mb-3">
             <div className="doctorProfile flex h-10 w-10 items-center justify-center rounded-full bg-red-100 font-bold text-red-600">
             {`${doctor.name[0]} ${doctor.surname[0]}`}

@@ -3,17 +3,22 @@ import { useState } from "react";
 import { useAuth } from "@shared/lib/auth/useAuth"
 import { AuthActions } from "./ui/headerAuthActions/header-auth-actions";
 import { HeaderAuthModal } from "./ui/headerAuthModal/header-auth-modal";
+import { HeaderNotificationsModal } from "./ui/headerNotificationsModal/header-notifications-modal";
 
 export function Header() {
   const { isAuthenticated, user } = useAuth()
-  const [loginOpen, setLoginOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState<boolean>(false);
+  const [notificationsOpen, setNotificationsOpen] = useState<boolean>(false)
 
   return (
     <header className="flex items-center justify-between gap-10 w-full">
       <HeaderGreeting name={user?.name ?? "Гость"}/>
       <div className="flex items-center gap-4">
         <HeaderSearch placeholder="Врачи, клиники, услуги..." />
-        <HeaderNotifications onClick={() => {}} />
+        <div className="relative">
+          <HeaderNotifications onClick={() => setNotificationsOpen(true)} />
+          {notificationsOpen && (<HeaderNotificationsModal onClose={()=> setNotificationsOpen(false)}/>)}
+        </div>
         {isAuthenticated && user ? (
           <HeaderProfile user={user}/>
         ): (

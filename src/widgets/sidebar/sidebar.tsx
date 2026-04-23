@@ -14,7 +14,7 @@ const sidebarItems : { id: string, label: string, icon: React.ElementType }[] = 
 
 export const Sidebar = () => {
     const [activeTab, setActiveTab] = useState<string>('dashboard');
-    const {logout} = useAuth()
+    const {logout,user} = useAuth()
     return (
         <>
         <aside className="w-64 bg-white border-r border-slate-200 flex flex-col fixed h-full">
@@ -43,9 +43,11 @@ export const Sidebar = () => {
             ))}
           </nav> 
           <div className=" flex absolute bottom-0 w-full border-t border-slate-100">
-            <div className="rounded-xl text-left text-slate-500 py-4">
-              <SidebarLogout onLogoutClick={logout} />
-            </div>
+            {user ? (
+              <div className="rounded-xl text-left text-slate-500 py-4">
+                <SidebarLogout onLogoutClick={logout} />
+              </div>
+            ): null}
           </div>
         </aside>
         </>
