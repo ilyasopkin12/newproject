@@ -8,7 +8,7 @@ type HeaderNotificationsProps = {
 export const HeaderNotifications = ( {onClick}: HeaderNotificationsProps ) => {
     return (
         <Button variant="outline" size="default" onClick={onClick}>
-            <span>Уведолмения</span>
+            <span>Уведомления</span>
             <Bell size={20} className="text-slate-600" />
         </Button>
     )

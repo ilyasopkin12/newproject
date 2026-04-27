@@ -6,7 +6,7 @@ import { PopularSpecialists } from "@/widgets/index";
 import { useDoctors } from "@/entities/doctor/model/use-doctors";
 import { useAuth } from "@/shared/lib/auth/useAuth";
 
-export function Page() {
+export function Home() {
   const { user } = useAuth()
   const {data, isPending,isError} = useDoctors()
   

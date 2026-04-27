@@ -4,6 +4,7 @@ import { useAuth } from "@shared/lib/auth/useAuth"
 import { AuthActions } from "./ui/headerAuthActions/header-auth-actions";
 import { HeaderAuthModal } from "./ui/headerAuthModal/header-auth-modal";
 import { HeaderNotificationsModal } from "./ui/headerNotificationsModal/header-notifications-modal";
+import { NavLink } from "react-router-dom";
 
 export function Header() {
   const { isAuthenticated, user } = useAuth()
@@ -20,7 +21,9 @@ export function Header() {
           {notificationsOpen && (<HeaderNotificationsModal onClose={()=> setNotificationsOpen(false)}/>)}
         </div>
         {isAuthenticated && user ? (
-          <HeaderProfile user={user}/>
+          <NavLink to={"/cabinet"}>
+            <HeaderProfile user={user}/>
+          </NavLink>
         ): (
         <>
           <AuthActions onLoginClick = {() => setLoginOpen(true)}/>
