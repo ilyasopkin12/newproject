@@ -1,4 +1,4 @@
-
+import { getAppointments } from "@/entities/appointment/api/get-appointments"
 
 export const Stats = () => {
     return (

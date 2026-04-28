@@ -1,8 +1,11 @@
 import { Header } from "@/widgets"
 import { Sidebar } from "@/widgets/sidebar"
 import { Stats } from "@widgets/stats"
+import type { Appointment } from "@/entities/appointment/model/types"
+import { usePatientAppointment } from "@/entities/appointment/model/use-appointments"
 
 export function Cabinet() {
+    const {data} = usePatientAppointment()
     return (
         <div className="min-h-screen bg-slate-50 ">
             <Sidebar/>
