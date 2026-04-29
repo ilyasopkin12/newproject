@@ -1,7 +1,6 @@
 import { Header } from "@/widgets"
 import { Sidebar } from "@/widgets/sidebar"
 import { Stats } from "@widgets/stats"
-import type { Appointment } from "@/entities/appointment/model/types"
 import { usePatientAppointment } from "@/entities/appointment/model/use-appointments"
 
 export function Cabinet() {
@@ -12,7 +11,7 @@ export function Cabinet() {
             <main className="ml-64 p-6">
                 <div className="space-y-20">
                     <Header/>
-                    <Stats/>
+                    <Stats Appointments={data} />
                 </div>
             </main>
         </div>
