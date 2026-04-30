@@ -37,6 +37,10 @@ apiClient.interceptors.response.use(
                 return apiClient(original)
             }
         }
+        const reqUrl = original?.url ?? ""
+        if (status === 401 && (reqUrl.includes("/auth/login") || reqUrl.includes("/auth/refresh"))) {
+             return Promise.reject(error)
+        }
 
         if (!original || status !==401 || original._retry) {
             return Promise.reject(error)
@@ -54,8 +58,12 @@ apiClient.interceptors.response.use(
                 {},
                 {withCredentials:true}
             )
-
-            const newAccessToken = refreshResponse.data.accessToken
+            const d = refreshResponse.data as { accessToken?: string; access_token?: string }
+            const newAccessToken = d.accessToken ?? d.access_token
+            if (!newAccessToken) {
+            tokenStorage.clearAllAuth()
+            return Promise.reject(new Error ("Refresh response missing access token"))
+            }
             tokenStorage.setAccessToken(newAccessToken)
 
             original.headers = original.headers ?? {}

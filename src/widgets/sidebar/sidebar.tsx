@@ -3,9 +3,10 @@ import { useState } from "react";
 import { SidebarLogout } from "./ui/index";
 import { Button } from "@shared/ui/button";
 import { useAuth } from "@/shared/lib/auth/useAuth";
+import { NavLink } from "react-router-dom";
 
-const sidebarItems : { id: string, label: string, icon: React.ElementType }[] = [
-  { id: 'dashboard', label: 'Дашборд', icon: Home },
+const sidebarItems : { id: string, label: string, icon: React.ElementType, navTo?: string }[] = [
+  { id: 'dashboard', label: 'Главная', icon: Home , navTo: "/" },
   { id: 'appointments', label: 'Мои записи', icon: Calendar },
   { id: 'messages', label: 'Сообщения', icon: MessageSquare },
   { id: 'doctors', label: 'Поиск врачей', icon: Search },
@@ -27,19 +28,21 @@ export const Sidebar = () => {
   
           <nav className="flex flex-col justify-items-start space-y-1 gap-5">
             {sidebarItems.map((item) => (
-              <Button 
-                variant="ghost"
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                className={`w-full flex justify-start text-left text-md items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-                  activeTab === item.id 
-                  ? 'bg-blue-50 text-blue-600 font-semibold' 
-                  : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
-                }`}
-              >
-                <item.icon size={20} />
-                {item.label}
-              </Button>
+              <NavLink to={item.navTo ?? "/"}>
+                <Button 
+                  variant="ghost"
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`w-full flex justify-start text-left text-md items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                    activeTab === item.id 
+                    ? 'bg-blue-50 text-blue-600 font-semibold' 
+                    : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
+                  }`}
+                >
+                  <item.icon size={20} />
+                  {item.label}
+                </Button>
+              </NavLink>
             ))}
           </nav> 
           <div className=" flex absolute bottom-0 w-full border-t border-slate-100">
