@@ -4,11 +4,23 @@ import { useAuth } from "@shared/lib/auth/useAuth"
 import { AuthActions } from "./ui/headerAuthActions/header-auth-actions";
 import { HeaderAuthModal } from "./ui/headerAuthModal/header-auth-modal";
 import { HeaderNotificationsModal } from "./ui/headerNotificationsModal/header-notifications-modal";
+import { HeaderRegisterModal } from "./ui/headerRegisterModal";
 
 export function Header() {
   const { isAuthenticated, user } = useAuth()
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
   const [notificationsOpen, setNotificationsOpen] = useState<boolean>(false)
+  const [registerOpen, setRegisterOpen] = useState<boolean>(false)
+
+  const switchToLogin = () => {
+    setRegisterOpen(false)
+    setLoginOpen(true)
+  }
+
+  const switchToRegister = () => {
+    setLoginOpen(false)
+    setRegisterOpen(true)
+  }
 
   return (
     <header className="flex items-center justify-between gap-10 w-full">
@@ -23,8 +35,9 @@ export function Header() {
           <HeaderProfile user={user}/>
         ): (
         <>
-          <AuthActions onLoginClick = {() => setLoginOpen(true)}/>
-            <HeaderAuthModal onClose={()=> setLoginOpen(false)} open={loginOpen}/>
+          <AuthActions onLoginClick = {() => setLoginOpen(true)} onRegisterClick={() => setRegisterOpen(true)}/>
+            <HeaderAuthModal onClose={()=> setLoginOpen(false)} open={loginOpen} onSwitchToRegister={switchToRegister} />
+              <HeaderRegisterModal onClose={() => setRegisterOpen(false)} open={registerOpen} onSwitchToLogin={switchToLogin} />
         </>
         )}
       </div>

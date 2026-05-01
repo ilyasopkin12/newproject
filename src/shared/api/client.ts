@@ -4,7 +4,7 @@ import { tokenStorage } from "./token-storage"
 
 type RetryConfing = AxiosRequestConfig & {_retry? : boolean; _networkRetryCount?: number}
 
-const API_BASE_URL = "http://localhost:8000"
+const API_BASE_URL = "http://localhost:3000"
 const MAX_NETWORK_RETRIES = 2;
 
 
