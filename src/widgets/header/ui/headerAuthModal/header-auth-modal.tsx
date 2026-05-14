@@ -27,6 +27,7 @@ import {
 interface HeaderAuthModalProps {
   open: boolean;
   onClose: () => void;
+  onSwitchToRegister: () => void
 }
 
 const loginSchema = z.object({
@@ -36,7 +37,7 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
+export const HeaderAuthModal = ({ open, onClose, onSwitchToRegister }: HeaderAuthModalProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const { setAuthUser } = useAuth();
@@ -120,6 +121,13 @@ export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
             </Button>
           </form>
         </Form>
+
+        <div className="text-center text-sm text-slate-500">
+          Нет аккаунта?{" "}
+          <button onClick={onSwitchToRegister} className="text-blue-600 hover:underline">
+            Зарегистрироваться
+          </button>
+        </div>
       </DialogContent>
     </Dialog>
   );

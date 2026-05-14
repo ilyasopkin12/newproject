@@ -1,0 +1,1 @@
+export { HeaderRegisterModal } from "./header-register-modal"
