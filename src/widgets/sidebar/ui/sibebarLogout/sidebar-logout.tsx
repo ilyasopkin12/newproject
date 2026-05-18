@@ -1,6 +1,5 @@
 import { LogOut } from "lucide-react"
-import { Button } from "@shared/ui/button"
-import { useAuth } from "@/shared/lib/auth/useAuth"
+import { Button } from "@/shared/ui"
 
 type SidebarLogoutProps = {
     onLogoutClick : () => void

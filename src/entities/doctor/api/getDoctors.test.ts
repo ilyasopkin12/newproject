@@ -1,23 +1,20 @@
 
-jest.mock("@/shared/api/client", () => ({
+jest.mock("@/shared/api", () => ({
     apiClient: {
         get: jest.fn(),
     },
 }))
 
-import { getDoctors } from "@entities/doctor/api/getDoctors"
-import type { Doctor } from "@entities/doctor/model/types";
-import { apiClient } from "@/shared/api/client";
-
-
+import { getDoctors } from "@/entities/doctor"
+import type { Doctor } from "@/entities/doctor"
+import { apiClient } from "@/shared/api"
 
 const mockedGet = jest.mocked(apiClient.get)
-
 
 describe("getDoctors", () => {
     beforeEach(()=> {
         mockedGet.mockReset()
-    });
+    })
 
     it("Должен возвращаться список докторов из GET /doctors", async() => {
         const items: Doctor[] = [
@@ -30,7 +27,11 @@ describe("getDoctors", () => {
                     name: "Терапевт"
                 },
                 city: "Ижевск",
-                experienceYears: 666
+                experienceYears: 666,
+                visitCount: 0,
+                ratingStars: 0,
+                clinic: "",
+                cabinet: "",
             },
         ]
 

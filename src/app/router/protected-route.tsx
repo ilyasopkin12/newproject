@@ -1,13 +1,11 @@
-import { Navigate } from "react-router-dom"
-import { useAuth } from "@/shared/lib/auth/useAuth"
+import { Navigate, Outlet } from "react-router-dom"
+import { useAuth } from "@/app"
 
 type ProtectedRouteProps = {
-    children: React.ReactNode
     redirectTo?: string
 }
 
 export function ProtectedRoute({
-    children,
     redirectTo = "/"
 }: ProtectedRouteProps) {
     const {isAuthenticated, isLoading} = useAuth()
@@ -19,5 +17,5 @@ export function ProtectedRoute({
         return <Navigate to={redirectTo} replace />
     }
 
-return <>{children}</>
+return <><Outlet/></>
 }

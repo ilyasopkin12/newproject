@@ -1,4 +1,4 @@
-import { Button } from "@/shared/ui/button"
+import { Button } from "@/shared/ui"
 import { Bell } from "lucide-react"
 
 type HeaderNotificationsProps = {

@@ -1,11 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-import { getAppointments } from "../api/get-appointments";
-import { useAuth } from "@/shared/lib/auth/useAuth";
+import { useQuery } from "@tanstack/react-query"
+
+import { tokenStorage } from "@/shared/api"
+
+import { getAppointments } from "../api"
+
 export function usePatientAppointment() {
-    const { isAuthenticated } = useAuth()
+    const isAuthenticated = Boolean(tokenStorage.getUser())
+
     return useQuery({
       queryKey: ["appointments", "patient"],
       queryFn: getAppointments,
       enabled: isAuthenticated,
-    });
-  }
+    })
+}

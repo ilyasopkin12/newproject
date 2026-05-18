@@ -8,7 +8,8 @@
       "@shared/*": ["src/shared/*"],
       "@app/*": ["src/app/*"],
       "@widgets/*": ["src/widgets/*"],
-      "@entities/*": ["src/entities/*"]
+      "@entities/*": ["src/entities/*"],
+      "@layout/*": ["src/layout/*"],
     },
     // File Layout
     // "rootDir": "./src",

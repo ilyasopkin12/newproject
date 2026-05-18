@@ -1,6 +1,5 @@
-import { apiClient } from "@/shared/api/client";
-import { tokenStorage } from "@/shared/api/token-storage";
-import type { User } from "@/entities/user/model/types";
+import type { User } from "@/entities/user"
+import { apiClient, tokenStorage } from "@/shared/api"
 
 export type LoginPayload = {
     email : string

@@ -1,16 +1,15 @@
-import React,{ createContext, useContext, useEffect, useMemo, useState} from "react";
-import type { User } from "@/entities/user/model/types";
-import { apiClient } from "@/shared/api/client";
-import { tokenStorage } from "@/shared/api/token-storage";
+import React, { createContext, useContext, useMemo, useState } from "react"
 
+import type { User } from "@/entities/user"
+import { tokenStorage } from "@/shared/api"
 
 type AuthContextValue = {
-  user: User | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  setAuthUser: (user: User | null) => void;
-  logout: () => void;
-};
+  user: User | null
+  isAuthenticated: boolean
+  isLoading: boolean
+  setAuthUser: (user: User | null) => void
+  logout: () => void
+}
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined)
 
@@ -19,14 +18,8 @@ type AuthProviderProps = {
 }
 
 export function AuthProvider ({children}: AuthProviderProps) {
-    const [user,setUser] = useState<User | null>(null)
-    const [isLoading, setIsLoading] = useState(true)
-    
-    useEffect(() => {
-        const storedUser = tokenStorage.getUser()
-        setUser(storedUser)
-        setIsLoading(false)
-      }, []);
+    const [user, setUser] = useState<User | null>(() => tokenStorage.getUser())
+    const [isLoading] = useState(false)
     
     const setAuthUser = (nextUser: User | null) => {
       setUser(nextUser)

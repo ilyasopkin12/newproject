@@ -1,19 +1,26 @@
-import { Header } from "@/widgets"
-import { Sidebar } from "@/widgets/sidebar"
-import { Stats } from "@widgets/stats"
-import { usePatientAppointment } from "@/entities/appointment/model/use-appointments"
+
+import { UserAppointments } from "@/widgets"
+import { usePatientAppointment } from "@/entities/appointment"
+import { Layout } from "@/app/layout/layout"
 
 export function Cabinet() {
-    const {data} = usePatientAppointment()
+    const {data,isError,isPending} = usePatientAppointment()
+
+    if(isError) {
+        console.log("Пользователь не авторизирован")
+        return (
+          <div className="min-h-screen bg-slate-50 p-6">
+            <p>Пожалуйста, авторизируйтесь на сайте</p>
+          </div>
+        )
+      }
+    
+      if (isPending) {
+        return (
+          <div>Загрузка...</div>
+        )
+      }
     return (
-        <div className="min-h-screen bg-slate-50 ">
-            <Sidebar/>
-            <main className="ml-64 p-6">
-                <div className="space-y-20">
-                    <Header/>
-                    <Stats Appointments={data} />
-                </div>
-            </main>
-        </div>
+      <Layout children={<UserAppointments userAppointments={data ?? []}/>}></Layout>
     )
 }

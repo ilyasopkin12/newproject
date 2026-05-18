@@ -1,8 +1,9 @@
 import { Calendar, CheckCircle2, Home, MessageSquare, Search, Settings } from "lucide-react"
 import { useState } from "react";
-import { SidebarLogout } from "./ui/index";
-import { Button } from "@shared/ui/button";
-import { useAuth } from "@/shared/lib/auth/useAuth";
+import { useAuth } from "@/app"
+import { Button } from "@/shared/ui"
+
+import { SidebarLogout } from "./ui"
 import { NavLink } from "react-router-dom";
 
 const sidebarItems : { id: string, label: string, icon: React.ElementType, navTo?: string }[] = [
@@ -28,10 +29,9 @@ export const Sidebar = () => {
   
           <nav className="flex flex-col justify-items-start space-y-1 gap-5">
             {sidebarItems.map((item) => (
-              <NavLink to={item.navTo ?? "/"}>
+              <NavLink key={item.id} to={item.navTo ?? "/"}>
                 <Button 
                   variant="ghost"
-                  key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   className={`w-full flex justify-start text-left text-md items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                     activeTab === item.id 

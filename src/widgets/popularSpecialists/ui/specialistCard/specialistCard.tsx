@@ -1,5 +1,6 @@
-import type { Doctor } from "@/entities/doctor/model/types"
+import type { Doctor } from "@/entities/doctor"
 import { Star } from "lucide-react"
+
 type specialistCardProps = {
     doctor: Doctor
 }

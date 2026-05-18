@@ -1,14 +1,21 @@
-import { HeaderGreeting, HeaderSearch, HeaderNotifications, HeaderProfile } from "./ui/index";
-import { useState } from "react";
-import { useAuth } from "@shared/lib/auth/useAuth"
-import { AuthActions } from "./ui/headerAuthActions/header-auth-actions";
-import { HeaderAuthModal } from "./ui/headerAuthModal/header-auth-modal";
-import { HeaderNotificationsModal } from "./ui/headerNotificationsModal/header-notifications-modal";
-import { NavLink } from "react-router-dom";
+import { useState } from "react"
+import { NavLink } from "react-router-dom"
+
+import { useAuth } from "@/app"
+
+import {
+  AuthActions,
+  HeaderAuthModal,
+  HeaderGreeting,
+  HeaderNotifications,
+  HeaderNotificationsModal,
+  HeaderProfile,
+  HeaderSearch,
+} from "./ui"
 
 export function Header() {
   const { isAuthenticated, user } = useAuth()
-  const [loginOpen, setLoginOpen] = useState<boolean>(false);
+  const [loginOpen, setLoginOpen] = useState<boolean>(false)
   const [notificationsOpen, setNotificationsOpen] = useState<boolean>(false)
 
   return (
@@ -32,5 +39,5 @@ export function Header() {
         )}
       </div>
     </header>
-  );
+  )
 }

@@ -1,16 +1,19 @@
-import { Header } from "@widgets/index";
-import { QuickActions } from "@widgets/index";
-import { Sidebar } from "@widgets/index";
-import { UpcomingAppointments } from "@/widgets/index";
-import { PopularSpecialists } from "@/widgets/index";
-import { useDoctors } from "@/entities/doctor/model/use-doctors";
-import { useAuth } from "@/shared/lib/auth/useAuth";
+import { useAuth } from "@/app"
+import { useDoctors } from "@/entities/doctor"
+import {
+  Header,
+  PopularSpecialists,
+  QuickActions,
+  Sidebar,
+  UpcomingAppointments,
+} from "@/widgets"
+import { Layout } from "@/app/layout/layout"
 
 export function Home() {
   const { user } = useAuth()
-  const {data, isPending,isError} = useDoctors()
-  
-  if(isError) {
+  const { data, isPending, isError } = useDoctors()
+
+  if (isError) {
     console.log("Ошибка загрузки данных с сервера")
     return (
       <div className="min-h-screen bg-slate-50 p-6">
@@ -20,22 +23,12 @@ export function Home() {
   }
 
   if (isPending) {
-    return (
-      <div>Загрузка...</div>
-    )
+    return <div>Загрузка...</div>
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Sidebar />
-      <main className="ml-64 p-6">
-        <div className="space-y-8">
-          <Header />
-          <QuickActions />
-          <UpcomingAppointments/>
-          <PopularSpecialists doctors={isPending? [] : (data)} user={user}/>
-        </div>
-      </main>
-    </div>
-  );
+    <Layout children={<><QuickActions />
+      <UpcomingAppointments />
+      <PopularSpecialists doctors={isPending ? [] : data ?? []} user={user} /></>}></Layout>
+  )
 }

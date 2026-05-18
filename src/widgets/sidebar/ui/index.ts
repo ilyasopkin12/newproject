@@ -1,1 +1,1 @@
-export { SidebarLogout } from "./sibebarLogout/index";
+export { SidebarLogout } from "./sibebarLogout"

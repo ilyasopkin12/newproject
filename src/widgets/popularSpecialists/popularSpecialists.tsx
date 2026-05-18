@@ -1,6 +1,6 @@
-import type { Doctor } from "@/entities/doctor/model/types"
-import type { User } from "@/entities/user/model/types"
-import { SpecialistCard } from "./ui/index"
+import type { Doctor } from "@/entities/doctor"
+import type { User } from "@/entities/user"
+import { SpecialistCard } from "./ui"
 import { Lightbulb } from "lucide-react"
 
 

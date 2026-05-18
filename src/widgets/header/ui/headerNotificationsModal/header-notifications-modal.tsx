@@ -1,4 +1,4 @@
-import { X, Calendar, FileText, CheckCircle2, AlertCircle, Bell, Settings } from 'lucide-react';
+import { X, Calendar, FileText, CheckCircle2, AlertCircle, Settings } from 'lucide-react'
 
 type HeaderNotificationsModalProps = {
     onClose: () => void

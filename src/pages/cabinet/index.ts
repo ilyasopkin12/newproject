@@ -1,1 +1,1 @@
-export { Cabinet } from "./ui/cabinet"
+export { Cabinet } from "./ui"
