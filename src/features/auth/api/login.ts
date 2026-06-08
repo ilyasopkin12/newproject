@@ -1,4 +1,5 @@
 import type { User } from "@/entities/user"
+import { getCurrentUser } from "@/entities/user/api/get-user"
 import { apiClient, tokenStorage } from "@/shared/api"
 
 export type LoginPayload = {
@@ -13,7 +14,7 @@ type LoginTokensBody = {
     refresh_token?: string
   }
   
-  function readLoginTokens(body: unknown): { access: string; refresh?: string } {
+function readLoginTokens(body: unknown): { access: string; refresh?: string } {
     if (!body || typeof body !== "object") {
       throw new Error("Некорректный ответ сервера при входе")
     }
@@ -27,7 +28,7 @@ type LoginTokensBody = {
         access,
         ...(typeof refresh === "string" ? { refresh } : {}),
     }
-  }
+}
   
   export async function loginRequest(payload: LoginPayload): Promise<User> {
     const { data } = await apiClient.post<LoginTokensBody>(
@@ -40,7 +41,7 @@ type LoginTokensBody = {
     if (refresh) {
       tokenStorage.setRefreshToken(refresh)
     }
-    const { data: me } = await apiClient.get<User>("/auth/me")
+    const me = await getCurrentUser()
     tokenStorage.setUser(me)
     return me
   }

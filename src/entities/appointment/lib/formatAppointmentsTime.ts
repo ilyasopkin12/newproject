@@ -5,12 +5,14 @@ export function formatSlotLabels(startTime: SlotTimeInput, endTime: SlotTimeInpu
   endLabel: string
 } {
   const endLabel =
-    endTime != null ? new Date(endTime).toLocaleTimeString("ru-RU") : ""
+    endTime != null ? new Date(endTime).toLocaleTimeString("ru-RU", {
+      timeStyle: 'short'
+    }) : ""
 
   const startLabel =
     startTime != null
       ? new Date(startTime).toLocaleString("ru-RU", {
-          dateStyle: "medium",
+          dateStyle: "short",
           timeStyle: "short",
         })
       : null
