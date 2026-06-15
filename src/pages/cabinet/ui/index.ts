@@ -1,1 +1,1 @@
-export { Cabinet } from "./cabinet"
+export { Cabinet } from './cabinet';

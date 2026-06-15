@@ -1,1 +1,1 @@
-export { loginRequest, type LoginPayload } from "./login"
+export { postLogin } from './login'

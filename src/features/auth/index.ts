@@ -1,2 +1,3 @@
-export { loginRequest, type LoginPayload } from "./api"
-export { useLoginMutation } from "./model"
+export { loginRequest } from './model';
+export { useLoginMutation } from './model';
+export type { LoginPayload } from '@/shared/api/types';

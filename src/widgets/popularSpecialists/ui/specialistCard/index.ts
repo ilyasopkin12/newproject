@@ -1,1 +1,1 @@
-export { SpecialistCard } from "./specialistCard"
+export { SpecialistCard } from './specialistCard';

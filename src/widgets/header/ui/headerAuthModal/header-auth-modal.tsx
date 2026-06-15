@@ -1,11 +1,11 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { ArrowRight, Eye, EyeOff } from "lucide-react"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ArrowRight, Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-import { useAuth } from "@/app"
-import { useLoginMutation } from "@/features/auth"
+import { useAuth } from '@/app';
+import { useLoginMutation } from '@/features/auth';
 import {
   Button,
   Dialog,
@@ -20,7 +20,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@/shared/ui"
+} from '@/shared/ui';
 
 interface HeaderAuthModalProps {
   open: boolean;
@@ -28,8 +28,8 @@ interface HeaderAuthModalProps {
 }
 
 const loginSchema = z.object({
-  email: z.string().email("Введите корректный email"),
-  password: z.string().min(6, "Минимум 6 символов"),
+  email: z.string().email('Введите корректный email'),
+  password: z.string().min(6, 'Минимум 6 символов'),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -41,7 +41,7 @@ export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: { email: '', password: '' },
   });
 
   const { mutateAsync: loginMutate, isPending } = useLoginMutation({
@@ -50,7 +50,7 @@ export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
       onClose();
     },
     onError: () => {
-      setServerError("Неверный логин или пароль");
+      setServerError('Неверный логин или пароль');
     },
   });
 
@@ -76,7 +76,11 @@ export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="example@mail.com" {...field} />
+                    <Input
+                      type="email"
+                      placeholder="example@mail.com"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -92,7 +96,7 @@ export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
                   <FormControl>
                     <div className="relative">
                       <Input
-                        type={showPassword ? "text" : "password"}
+                        type={showPassword ? 'text' : 'password'}
                         placeholder="••••••••"
                         {...field}
                       />
@@ -101,7 +105,11 @@ export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
                         onClick={() => setShowPassword((v) => !v)}
                         className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
                       >
-                        {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                        {showPassword ? (
+                          <EyeOff size={16} />
+                        ) : (
+                          <Eye size={16} />
+                        )}
                       </button>
                     </div>
                   </FormControl>
@@ -110,10 +118,12 @@ export const HeaderAuthModal = ({ open, onClose }: HeaderAuthModalProps) => {
               )}
             />
 
-            {serverError && <p className="text-sm text-red-500">{serverError}</p>}
+            {serverError && (
+              <p className="text-sm text-red-500">{serverError}</p>
+            )}
 
             <Button type="submit" className="w-full" disabled={isPending}>
-              {isPending ? "Входим..." : "Войти"}
+              {isPending ? 'Входим...' : 'Войти'}
               <ArrowRight className="ml-2" size={16} />
             </Button>
           </form>

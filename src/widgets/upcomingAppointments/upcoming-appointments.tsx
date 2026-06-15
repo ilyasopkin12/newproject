@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 type UpcomingAppointment = {
   id: string;
@@ -8,34 +8,34 @@ type UpcomingAppointment = {
   clinic: string;
   dateTime: string;
   place: string;
-  visitType: "online" | "offline";
-}
+  visitType: 'online' | 'offline';
+};
 
 const specialtyAvatarStyle: Record<string, { text: string; bg: string }> = {
-  Кардиолог: { text: "text-blue-600", bg: "bg-blue-100" },
-  Терапевт: { text: "text-green-600", bg: "bg-green-100" },
+  Кардиолог: { text: 'text-blue-600', bg: 'bg-blue-100' },
+  Терапевт: { text: 'text-green-600', bg: 'bg-green-100' },
 };
 
 const appointments: UpcomingAppointment[] = [
   {
-    id: "1",
-    initials: "ИС",
-    doctorName: "Иван Сергеевич Петров",
-    specialty: "Кардиолог",
-    clinic: "Клиника \"Здоровье\"",
-    dateTime: "12 апреля, 14:30",
-    place: "Кабинет 305",
-    visitType: "offline",
+    id: '1',
+    initials: 'ИС',
+    doctorName: 'Иван Сергеевич Петров',
+    specialty: 'Кардиолог',
+    clinic: 'Клиника "Здоровье"',
+    dateTime: '12 апреля, 14:30',
+    place: 'Кабинет 305',
+    visitType: 'offline',
   },
   {
-    id: "2",
-    initials: "МВ",
-    doctorName: "Мария Владимировна Козлова",
-    specialty: "Терапевт",
-    clinic: "Поликлиника №1",
-    dateTime: "15 апреля, 10:00",
-    place: "Онлайн консультация",
-    visitType: "online",
+    id: '2',
+    initials: 'МВ',
+    doctorName: 'Мария Владимировна Козлова',
+    specialty: 'Терапевт',
+    clinic: 'Поликлиника №1',
+    dateTime: '15 апреля, 10:00',
+    place: 'Онлайн консультация',
+    visitType: 'online',
   },
 ];
 
@@ -44,17 +44,34 @@ export function UpcomingAppointments() {
     <section className="mb-8 w-full">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-lg font-bold">Предстоящие записи</h2>
-        <Link to="/appointments" className="text-sm text-blue-600 hover:text-blue-700">Все записи →</Link>
+        <Link
+          to="/appointments"
+          className="text-sm text-blue-600 hover:text-blue-700"
+        >
+          Все записи →
+        </Link>
       </div>
 
       <div className="space-y-3">
-        {appointments.map(({ id, initials, doctorName, specialty, clinic, dateTime, place, visitType }) => {
-            const avatar =
-              specialtyAvatarStyle[specialty] ?? { text: "text-slate-600", bg: "bg-slate-100" };
+        {appointments.map(
+          ({
+            id,
+            initials,
+            doctorName,
+            specialty,
+            clinic,
+            dateTime,
+            place,
+            visitType,
+          }) => {
+            const avatar = specialtyAvatarStyle[specialty] ?? {
+              text: 'text-slate-600',
+              bg: 'bg-slate-100',
+            };
             const visitBadgeClass =
-              visitType === "online"
-                ? "bg-blue-50 text-blue-700 border-blue-200"
-                : "bg-slate-50 text-slate-600 border-slate-200";
+              visitType === 'online'
+                ? 'bg-blue-50 text-blue-700 border-blue-200'
+                : 'bg-slate-50 text-slate-600 border-slate-200';
 
             return (
               <div
@@ -82,13 +99,13 @@ export function UpcomingAppointments() {
                     <span
                       className={`rounded-full border px-2 py-0.5 text-xs ${visitBadgeClass}`}
                     >
-                      {visitType === "online" ? "Онлайн" : "Очно"}
+                      {visitType === 'online' ? 'Онлайн' : 'Очно'}
                     </span>
                   </div>
                 </div>
               </div>
             );
-          },
+          }
         )}
       </div>
     </section>

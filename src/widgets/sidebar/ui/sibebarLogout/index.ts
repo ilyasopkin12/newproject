@@ -1,1 +1,1 @@
-export { SidebarLogout } from "./sidebar-logout";
+export { SidebarLogout } from './sidebar-logout';

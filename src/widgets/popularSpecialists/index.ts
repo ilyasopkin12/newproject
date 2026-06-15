@@ -1,1 +1,1 @@
-export { PopularSpecialists } from "./popularSpecialists"
+export { PopularSpecialists } from './popularSpecialists';

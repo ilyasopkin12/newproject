@@ -1,1 +1,1 @@
-export { getAppointments } from "./get-appointments"
+export { getAppointments } from './get-appointments';

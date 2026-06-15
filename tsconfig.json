@@ -1,5 +1,5 @@
 {
-  "include":["src/**/*","global.d.ts"],
+  "include": ["src/**/*", "global.d.ts"],
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     "baseUrl": ".",
@@ -7,9 +7,10 @@
       "@/*": ["src/*"],
       "@shared/*": ["src/shared/*"],
       "@app/*": ["src/app/*"],
+      "@features/*": ["src/features/*"],
       "@widgets/*": ["src/widgets/*"],
       "@entities/*": ["src/entities/*"],
-      "@layout/*": ["src/layout/*"],
+      "@layout/*": ["src/layout/*"]
     },
     // File Layout
     // "rootDir": "./src",
@@ -51,6 +52,6 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   }
 }

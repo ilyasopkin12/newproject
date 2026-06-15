@@ -1,2 +1,2 @@
-export { formatSlotLabels } from "./formatAppointmentsTime"
-export type { SlotTimeInput } from "./formatAppointmentsTime"
+export { formatSlotLabels } from './formatAppointmentsTime';
+export type { SlotTimeInput } from './formatAppointmentsTime';

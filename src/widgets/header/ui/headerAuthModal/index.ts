@@ -1,1 +1,1 @@
-export { HeaderAuthModal } from "./header-auth-modal"
+export { HeaderAuthModal } from './header-auth-modal';

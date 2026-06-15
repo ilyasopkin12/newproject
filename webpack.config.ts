@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 export default (env: { [key: string]: unknown }, argv: { mode: string }) => {
   const isProduction = argv.mode === 'production';
-  
+
   const config: Configuration & DevServerConfiguration = {
     mode: isProduction ? 'production' : 'development',
     entry: './src/app/main.tsx',
@@ -38,14 +38,14 @@ export default (env: { [key: string]: unknown }, argv: { mode: string }) => {
           use: [
             // В production извлекаем CSS в отдельные файлы
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            { 
-              loader: 'css-loader', 
-              options: { 
-                modules: true, 
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
                 esModule: false,
                 // Source maps только для dev
                 sourceMap: !isProduction,
-              } 
+              },
             },
             'sass-loader',
           ],
@@ -96,29 +96,33 @@ export default (env: { [key: string]: unknown }, argv: { mode: string }) => {
     },
     // Source maps: подробные для dev, легкие для prod
     devtool: isProduction ? 'source-map' : 'eval-source-map',
-    
+
     // DevServer только для development
-    ...(isProduction ? {} : {
-      devServer: {
-        static: './dist',
-        port: 4000,
-        hot: true,
-        historyApiFallback: true, // для SPA роутинга
-      },
-    }),
-    
+    ...(isProduction
+      ? {}
+      : {
+          devServer: {
+            static: './dist',
+            port: 4000,
+            hot: true,
+            historyApiFallback: true, // для SPA роутинга
+          },
+        }),
+
     plugins: [
       new HtmlWebpackPlugin({
         template: './src/app/index.html',
         // В production минифицируем HTML
-        minify: isProduction ? {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-        } : false,
+        minify: isProduction
+          ? {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeAttributeQuotes: true,
+            }
+          : false,
       }),
       new MiniCssExtractPlugin({
-        filename: isProduction 
+        filename: isProduction
           ? 'styles/[name].[contenthash].css'
           : 'styles/[name].css',
         chunkFilename: isProduction
@@ -126,34 +130,38 @@ export default (env: { [key: string]: unknown }, argv: { mode: string }) => {
           : 'styles/[id].css',
       }),
     ],
-    
+
     // Production оптимизации
     optimization: {
       minimize: isProduction,
-      splitChunks: isProduction ? {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: 10,
-          },
-          common: {
-            minChunks: 2,
-            priority: 5,
-            reuseExistingChunk: true,
-          },
-        },
-      } : false,
+      splitChunks: isProduction
+        ? {
+            chunks: 'all',
+            cacheGroups: {
+              vendor: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendors',
+                priority: 10,
+              },
+              common: {
+                minChunks: 2,
+                priority: 5,
+                reuseExistingChunk: true,
+              },
+            },
+          }
+        : false,
     },
-    
+
     // Production метрики
-    performance: isProduction ? {
-      hints: 'warning',
-      maxEntrypointSize: 512000,
-      maxAssetSize: 512000,
-    } : false,
+    performance: isProduction
+      ? {
+          hints: 'warning',
+          maxEntrypointSize: 512000,
+          maxAssetSize: 512000,
+        }
+      : false,
   };
-  
+
   return config;
 };

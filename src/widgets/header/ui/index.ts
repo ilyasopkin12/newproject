@@ -1,7 +1,7 @@
-export { HeaderGreeting } from "./headerGreeting"
-export { HeaderSearch } from "./headerSearch"
-export { HeaderNotifications } from "./headerNotifications"
-export { HeaderProfile } from "./headerProfile"
-export { AuthActions } from "./headerAuthActions"
-export { HeaderAuthModal } from "./headerAuthModal"
-export { HeaderNotificationsModal } from "./headerNotificationsModal"
+export { HeaderGreeting } from './headerGreeting';
+export { HeaderSearch } from './headerSearch';
+export { HeaderNotifications } from './headerNotifications';
+export { HeaderProfile } from './headerProfile';
+export { AuthActions } from './headerAuthActions';
+export { HeaderAuthModal } from './headerAuthModal';
+export { HeaderNotificationsModal } from './headerNotificationsModal';

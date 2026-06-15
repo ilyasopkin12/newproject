@@ -1,21 +1,23 @@
-import { Navigate, Outlet } from "react-router-dom"
-import { useAuth } from "@/app"
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '@/app';
 
 type ProtectedRouteProps = {
-    redirectTo?: string
-}
+  redirectTo?: string;
+};
 
-export function ProtectedRoute({
-    redirectTo = "/"
-}: ProtectedRouteProps) {
-    const {isAuthenticated, isLoading} = useAuth()
-    
-    if(isLoading) {
-        return <div>Загрузка...</div>
-    }
-    if(!isAuthenticated) {
-        return <Navigate to={redirectTo} replace />
-    }
+export function ProtectedRoute({ redirectTo = '/' }: ProtectedRouteProps) {
+  const { isAuthenticated, isLoading } = useAuth();
 
-return <><Outlet/></>
+  if (isLoading) {
+    return <div>Загрузка...</div>;
+  }
+  if (!isAuthenticated) {
+    return <Navigate to={redirectTo} replace />;
+  }
+
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 }

@@ -1,8 +1,6 @@
-import { apiClient } from "./client";
-import { attachAuthInterceptor } from "./interceptors/auth-interceptor"
-import { attachRetryInterceptor } from "./interceptors/retry-interceptor"
-import { attachRefreshInterceptor } from "./interceptors/refresh-interceptor"
+import { apiClient } from './client';
+import { attachAuthInterceptor, attachRetryInterceptor, attachRefreshInterceptor } from './interceptors';
 
-attachAuthInterceptor(apiClient)
-attachRetryInterceptor(apiClient)
-attachRefreshInterceptor(apiClient)
+attachAuthInterceptor(apiClient);
+attachRetryInterceptor(apiClient);
+attachRefreshInterceptor(apiClient);

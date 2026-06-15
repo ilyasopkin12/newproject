@@ -3,32 +3,32 @@ type QuickActionItem = {
   title: string;
   description: string;
   icon: string;
-}
+};
 
 const quickActions: QuickActionItem[] = [
   {
-    id: "new-appointment",
-    title: "Новая запись",
-    description: "Запишитесь к врачу",
-    icon: "📅",
+    id: 'new-appointment',
+    title: 'Новая запись',
+    description: 'Запишитесь к врачу',
+    icon: '📅',
   },
   {
-    id: "prescriptions",
-    title: "Рецепты",
-    description: "Мои рецепты",
-    icon: "💊",
+    id: 'prescriptions',
+    title: 'Рецепты',
+    description: 'Мои рецепты',
+    icon: '💊',
   },
   {
-    id: "analyses",
-    title: "Анализы",
-    description: "Результаты",
-    icon: "📋",
+    id: 'analyses',
+    title: 'Анализы',
+    description: 'Результаты',
+    icon: '📋',
   },
   {
-    id: "consultation",
-    title: "Консультация",
-    description: "Онлайн чат",
-    icon: "💬",
+    id: 'consultation',
+    title: 'Консультация',
+    description: 'Онлайн чат',
+    icon: '💬',
   },
 ];
 

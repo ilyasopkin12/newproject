@@ -1,1 +1,1 @@
-export { AppointmentsModal } from './useAppointments-modal'
+export { AppointmentsModal } from './useAppointments-modal';

@@ -1,1 +1,1 @@
-export type { User } from "@/shared/model/user"
+export type { User } from '@/shared/model/user';

@@ -1,1 +1,1 @@
-export { HeaderNotificationsModal } from "./header-notifications-modal"
+export { HeaderNotificationsModal } from './header-notifications-modal';

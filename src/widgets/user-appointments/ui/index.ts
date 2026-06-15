@@ -1,2 +1,2 @@
-export { UserAppointments } from "./userAppointments"
-export { AppointmentsModal } from "./userAppointments-modal"
+export { UserAppointments } from './userAppointments';
+export { AppointmentsModal } from './userAppointments-modal';
